@@ -16,7 +16,9 @@ labels.add({
 	downloader : '<span class="fa fa-download" /> Downloaders',
 	transmission : 'Transmission',
 	removeTorrent : 'Remove Torrent <em><small>from downloader when finished</small></em>',
-	'downloader:transmission:url' : 'Transmission Url'
+	'downloader:transmission:url' : 'Transmission Url',
+	'downloader:transmission:username' : 'Transmission Username',
+	'downloader:transmission:password' : 'Transmission Password',
 });
 
 var convertErr = function(err) {
@@ -107,11 +109,15 @@ var getTransmission = function() {
 		return _transmission;
 		
 	var transmissionUrl = config.get().downloader.transmission.url;
+	var transmissionUsername = config.get().downloader.transmission.username;
+	var transmissionPassword = config.get().downloader.transmission.password;
 
 	var parsedUrl = url.parse(transmissionUrl, false, true);	
 	var transmission = new Transmission({
 		host : parsedUrl.hostname,
-		port : parsedUrl.port
+		port : parsedUrl.port,
+		username: transmissionUsername,
+		password: transmissionPassword
 	});
 	
 	_transmission = transmission;
