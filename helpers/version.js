@@ -3,6 +3,7 @@ var npm = require('npm');
 var fs = require('fs');
 var path = require('path');
 var moment = require('moment');
+var semver = require('semver');
 
 var newVersionLastChecked;
 var lastNewVersion;
@@ -50,7 +51,7 @@ module.exports.newVersion = function() {
 
    		newVersionLastChecked = today;
     	
-    	if (version !== module.exports.myVersion) {
+    	if (semver.gt(version, module.exports.myVersion)) {
     		lastNewVersion = version;
     		return version;
     	} else {
