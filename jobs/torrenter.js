@@ -11,7 +11,12 @@ var notifier = require('./notifier');
 var Item = require('../models/item').Item;
 var ItemStates = require('../models/item').ItemStates;
 
-config.add('transmission', { type : 'literal', store : { 'downloader:transmission:url' : 'http://localhost:9091', 'downloader:removeTorrent' : true }});
+config.add('transmission', { type : 'literal', store : { 
+	'downloader:transmission:url' : 'http://localhost:9091', 
+	'downloader:transmission:username' : '',
+	'downloader:transmission:password' : '',
+	'downloader:removeTorrent' : true 
+}});
 labels.add({
 	downloader : '<span class="fa fa-download" /> Downloaders',
 	transmission : 'Transmission',
