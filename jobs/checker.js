@@ -78,20 +78,24 @@ function checkOne(item) {
 	} else if (item.state === ItemStates.snatched) {
 		return torrenter.checkFinished(item);
 	} else if (item.state === ItemStates.downloaded) {
-		return renamer.rename(item);
+		//return renamer.rename(item);
+		return finish(item);
 	} else if (item.state === ItemStates.renamed) {
-		return notifier.updateLibrary(item);
+		//return notifier.updateLibrary(item);
+		return finish(item);
 	} else if (item.state === ItemStates.libraryUpdated) {
 		if (isMusic(item)) {
 			return finish(item);
 		} else {
-			return subtitler.findSubtitles(item);
+			//return subtitler.findSubtitles(item);
+			return finish(item);
 		}
 	} else if (item.state === ItemStates.subtitlerFailed) {
 		if (isAfterSubtitlerRetryLimit(item)) {
 			return finish(item);
 		} else {
-			return subtitler.findSubtitles(item);
+			//return subtitler.findSubtitles(item);
+			return finish(item);
 		}
 	} else if (item.state === ItemStates.subtitled) {
 		return finish(item);
